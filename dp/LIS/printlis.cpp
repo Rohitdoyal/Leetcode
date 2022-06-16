@@ -1,6 +1,8 @@
 #include<bits/stdc++.h> 
 using namespace std;
 
+
+
 int lis(vector<int>&arr){
     int n = arr.size();
     int *dp = new int[n];
@@ -38,17 +40,8 @@ int lis(vector<int>&arr){
         maxindex= hash[maxindex];
     }
     cout<<endl;
-
-    
-
-
-
     return maxi;
-
-
-
 }
-
 
 int main(){
     vector<int> arr= {4,3,2,5,18,12,108,14};
@@ -58,6 +51,7 @@ int main(){
      int n = arr.size();
 
     cout<<"LIS of ARR: "<<lis(arr)<<endl;
-
     return 0;
 }
+
+
