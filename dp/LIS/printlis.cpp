@@ -6,8 +6,8 @@ using namespace std;
 int dp[100][100];
 
 
-int lis(int index,int prev,vector<int>&arr){
-    cout<<"("<<index<<" "<<prev<<")\n";
+int lis(int index,int prev,vector<int>&arr,vector<int> &lisarray){
+    //cout<<"("<<index<<" "<<prev<<")\n";
     //base case simple
     if(index>=arr.size()){
         return dp[index][prev+1]= 0;
@@ -20,13 +20,18 @@ int lis(int index,int prev,vector<int>&arr){
     int include =0;
     int not_include =0;
 
+   
+
     if(prev==-1 ||(arr[index]>arr[prev])){
-        include= 1+lis(index+1,index,arr);
-        not_include=  lis(index+1, prev, arr);
+        lisarray.push_back(arr[index]);
+        include= 1+lis(index+1,index,arr,lisarray);
+        lisarray.pop_back();
     }
-    else{
-        not_include= lis(index+1,prev,arr);
-    }
+   
+     not_include= lis(index+1,prev,arr,lisarray);
+   
+       
+    
 
     int ans = max(include,not_include);
     return dp[index][prev+1]  = ans;
@@ -47,14 +52,23 @@ int main(){
         for (int j = 0; j< n+1; j++)
         {   
             dp[i][j]=-1;
-            cout<<dp[i][j]<<" ";
+            //cout<<dp[i][j]<<" ";
         }
-        cout<<endl;
+        //cout<<endl;
         
     }
-     
+     vector<int> lisarray;
 
-    cout<<"LIS of ARR: "<<lis(0,-1,arr)<<endl;
+    cout<<"LIS of ARR: "<<lis(0,-1,arr,lisarray)<<endl;
+
+    cout<<"lis vector is ::\n";
+    for (int i = 0; i < lisarray.size();  i++)
+    {
+        /* code */
+        cout<<lisarray[i]<<" ";
+    }
+
+    
 
     
 

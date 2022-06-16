@@ -22,14 +22,42 @@ int lis(int index,int prev,vector<int>&arr){
 
     if(prev==-1 ||(arr[index]>arr[prev])){
         include= 1+lis(index+1,index,arr);
-        not_include=  lis(index+1, prev, arr);
     }
-    else{
-        not_include= lis(index+1,prev,arr);
-    }
+    not_include= lis(index+1,prev,arr);
+   
 
     int ans = max(include,not_include);
     return dp[index][prev+1]  = ans;
+}
+
+
+int tabularlis(vector<int>arr){
+    int n = arr.size();
+    //int t[n][n+1]={0};
+    vector<vector<int>>t(n+1,vector<int>(n+1,0));
+
+    for(int i = n-1; i>=0; i--){
+        for(int j = i-1; j>=-1; j--){
+            int include =0;
+            int not_include =0;
+
+            if(j==-1 ||(arr[i]>arr[j])){
+                include= 1+t[i+1][i+1];
+            }
+            not_include= t[i+1][j+1];
+            int ans = max(include,not_include);
+            t[i][j+1] = ans;
+        }
+    }
+
+    // for(int i =0; i<t.size(); i++){
+    //     for(int j =0; j<t[i].size(); j++){
+    //         cout<<t[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    return t[0][0];
 
 }
 
@@ -56,7 +84,7 @@ int main(){
 
     cout<<"LIS of ARR: "<<lis(0,-1,arr)<<endl;
 
-    
+    cout<<"tabular form ans ="<<tabularlis(arr)<<endl;
 
 
     return 0;
