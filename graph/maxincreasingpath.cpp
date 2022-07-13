@@ -52,8 +52,6 @@ public:
             for(int j =0; j<m ; j++){
                 int d= 1+dfs(matrix, i, j,mem);        
                 ans = max(ans,d);
-            
-            
             }
             
         }
