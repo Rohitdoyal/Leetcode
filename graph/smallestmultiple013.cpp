@@ -2,7 +2,7 @@
 using namespace std;
 
 
-string Solution::multiple(int A) {
+string multiple(int A) {
     
     if(A==1){
         return "1";
