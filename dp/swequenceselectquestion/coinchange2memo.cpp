@@ -3,8 +3,6 @@ using namespace std;
 
 class Solution {
 public:
-    
-    
     int f(int i , int amount , vector<int>& coins, vector<vector<int>>&dp){
         if(i==0){
             return (amount%coins[0]==0);
@@ -20,7 +18,6 @@ public:
         if(amount>=coins[i]){
             include  = f(i,amount-coins[i],coins,dp);
         }
-        
         return dp[i][amount] = include+not_include;
         
     }
@@ -29,10 +26,8 @@ public:
         if(coins.size()==0){
             return 0;
         }
-        
         int n = coins.size();
         vector<vector<int>>dp(n, vector<int>(amount+1,-1));
-        
         return f(coins.size()-1, amount,coins,dp);
     }
 };
