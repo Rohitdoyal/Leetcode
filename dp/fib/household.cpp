@@ -33,12 +33,12 @@ public:
 int main(){
     //there is house in arr we need to find out max profit 
     //not choose consecutive 
-    int arr[]= {1,2,3,1};
-    int n = sizeof(arr)/sizeof(arr[0]);
+    // int arr[]= {1,2,3,1};
+    // int n = sizeof(arr)/sizeof(arr[0]);
 
-    int a1 = household(arr,1,n-1);
-    int a2 = household(arr,0,n-2);
-    cout<<max(a1,a2)<<"<=answer";
+    // int a1 = household(arr,1,n-1);
+    // int a2 = household(arr,0,n-2);
+    // cout<<max(a1,a2)<<"<=answer";
 
 
 
