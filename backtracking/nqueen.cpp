@@ -83,7 +83,7 @@ int main(){
 
     vector<vector<string>>ans;
     ans = solveNQueens(n);
-    printgrid(ans);
+    
 
 
 
